@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EpiSignal AI</title>
+</head>
+
+<body style="font-family: Arial; text-align:center;">
+
+  <h1>🦠 EpiSignal AI</h1>
+
+  <p>Early disease outbreak detection system</p>
+
+  <h2>Symptom Checker</h2>
+
+  <input id="city" placeholder="City"><br><br>
+
+  <label><input type="checkbox" id="fever"> Fever</label><br>
+  <label><input type="checkbox" id="cough"> Cough</label><br>
+  <label><input type="checkbox" id="fatigue"> Fatigue</label><br>
+
+  <br>
+
+  <button onclick="check()">Check Risk</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function check() {
+      let score = 0;
+
+      if(document.getElementById("fever").checked) score += 3;
+      if(document.getElementById("cough").checked) score += 2;
+      if(document.getElementById("fatigue").checked) score += 1;
+
+      let city = document.getElementById("city").value;
+
+      let level = "";
+
+      if(score <= 2) level = "LOW RISK 🟢";
+      else if(score <= 4) level = "MEDIUM RISK 🟡";
+      else level = "HIGH RISK 🔴";
+
+      document.getElementById("result").innerHTML =
+        city + ": " + level;
+    }
+  </script>
+
+</body>
+</html>
